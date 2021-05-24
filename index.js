@@ -33,7 +33,7 @@ client.connect((err) => {
 
 
 
-
+    //Client side
 
     //getting the services
     app.get("/services", (req, res) => {
@@ -43,76 +43,48 @@ client.connect((err) => {
     });
    
 
-    // //place an order
-    // app.post("/addOrder", (req, res) => {
+    //place an order
+    app.post("/addOrder", (req, res) => {
 
 
-    //   const name = req.body.name;
-    //   const email = req.body.email;
-    //   const selectedService = req.body.selectedService;
-    //   const description = req.body.description;
-    //   const price = req.body.price;
-    //   const file = req.files.file;
+      const name = req.body.name;
+      const email = req.body.email;
+      const selectedService = req.body.selectedService;
+      const description = req.body.description;
+      const price = req.body.price;
+      const file = req.files.file;
 
-    //   const newImg = file.data;
-    //   const encImg = newImg.toString("base64");
+      const newImg = file.data;
+      const encImg = newImg.toString("base64");
   
-    //   var image = {
-    //     contentType: file.mimetype,
-    //     size: file.size,
-    //     img: Buffer.from(encImg, "base64"),
-    //   };
+      var image = {
+        contentType: file.mimetype,
+        size: file.size,
+        img: Buffer.from(encImg, "base64"),
+      };
 
 
-    //   ordersCollection.insertOne({ name,email,selectedService, description,price, image }).then((result) => {
-    //     res.send(result.insertedCount > 0);
-    //   });
-    // });
+      ordersCollection.insertOne({ name,email,selectedService, description,price, image }).then((result) => {
+        res.send(result.insertedCount > 0);
+      });
+    });
 
 
 
 
 
-    // //services ordered by a particular customer
-    // app.get("/servicesOrdered", (req, res) => {
-    //   ordersCollection
-    //     .find({ email: req.query.email })
-    //     .toArray((err, documents) => {
-    //       res.send(documents);
-    //     });
-    // });
-
-
-    
-
-    // //Post a review
-    // app.post("/addReview", (req, res) => {
-    //   const review = req.body;
-    //   reviewsCollection.insertOne(review).then((result) => {
-    //     res.send(result.insertedCount > 0);
-    //   });
-    // });
+    //services ordered by a particular customer
+    app.get("/servicesOrdered", (req, res) => {
+      ordersCollection
+        .find({ email: req.query.email })
+        .toArray((err, documents) => {
+          res.send(documents);
+        });
+    });
 
 
     
 
-    // //Get the reviews in the client side
-    // app.get("/reviews", (req, res) => {
-    //   reviewsCollection.find({}).toArray((err, documents) => {
-    //     res.send(documents);
-    //   });
-    // });
-
-
-    
-    // app.get("/reviews", (req, res) => {
-    //   reviewsCollection
-    //     .find({ email: req.query.email })
-    //     .toArray((err, documents) => {
-    //       res.send(documents);
-    //     });
-    // });
-   
 
 
 //ADMIN PANEL
@@ -149,24 +121,24 @@ client.connect((err) => {
     });
 
 
-    // //To see all services ordered which an admin can only see
-    // // a user can only see his ordered services whereas an admin sees the all ordered services
-    // app.get("/allServicesOrdered", (req, res) => {
-    //   ordersCollection.find({})
-    //   .toArray((err, documents) => {
-    //     res.send(documents);
-    //   });
-    // });
+    //To see all services ordered which an admin can only see
+    // a user can only see his ordered services whereas an admin sees the all ordered services
+    app.get("/allServicesOrdered", (req, res) => {
+      ordersCollection.find({})
+      .toArray((err, documents) => {
+        res.send(documents);
+      });
+    });
     
 
 
-    // //To check whether a person is admin or not. Use in Sidebar
-    // app.post("/isAdmin", (req, res) => {
-    //   const email = req.body.email;
-    //   adminsCollection.find({ email: email }).toArray((err, admins) => {
-    //     res.send(admins.length > 0);
-    //   });
-    // });
+    //To check whether a person is admin or not. Use in Sidebar
+    app.post("/isAdmin", (req, res) => {
+      const email = req.body.email;
+      adminsCollection.find({ email: email }).toArray((err, admins) => {
+        res.send(admins.length > 0);
+      });
+    });
 
 
 
