@@ -5,9 +5,9 @@ Athena Design is a full-stack site that serves the purposes of a digital service
 </p>
 
 <h2>The source code is uploaded at two parts in two repositories.</h2>
-<b>Live Link:</b> https://aircnc-8c1bd.web.app <br><br>
-<b>Client:</b> https://github.com/Tanviras/airCNC-client  <br><br>
-<b>Server:</b> https://github.com/Tanviras/airCNC-server
+<b>Live Link:</b> https://athena-894b7.web.app/ <br><br>
+<b>Client:</b> https://github.com/Tanviras/athena-design-client  <br><br>
+<b>Server:</b> https://github.com/Tanviras/athena-design-server
 
 <h2>Main Features</h2>
 
